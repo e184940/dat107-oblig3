@@ -14,24 +14,24 @@ public class Ansatt {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ansattId;
+	private int ansatt_id;
 
 	private String brukernavn;
 	private String fornavn;
 	private String etternavn;
 	private LocalDate ansDato;
 	private String stilling;
-	private double maandeslonn;
+	private double maanedslonn;
 
 	public Ansatt() {
 	}
 
 	public int getAnsattId() {
-		return ansattId;
+		return ansatt_id;
 	}
 
-	public void setAnsattId(int ansattId) {
-		this.ansattId = ansattId;
+	public void setAnsattId(int ansatt_id) {
+		this.ansatt_id = ansatt_id;
 	}
 
 	public String getBrukernavn() {
@@ -74,18 +74,17 @@ public class Ansatt {
 		this.stilling = stilling;
 	}
 
-	public double getMaandeslonn() {
-		return maandeslonn;
+	public double getMaanedlonn() {
+		return maanedslonn;
 	}
 
-	public void setMaandeslonn(double maandeslonn) {
-		this.maandeslonn = maandeslonn;
+	public void setMaandeslonn(double maanedslonn) {
+		this.maanedslonn = maanedslonn;
 	}
 
 	@Override
 	public String toString() {
-		return "Ansatt [ansattId=" + ansattId + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
-				+ etternavn + ", ansDato=" + ansDato + ", stilling=" + stilling + ", maandeslonn=" + maandeslonn + "]";
+		return "Ansatt [ansattId=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
+				+ etternavn + ", ansDato=" + ansDato + ", stilling=" + stilling + ", månedslønn=" + maanedslonn + "]";
 	}
-
 }
