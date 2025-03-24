@@ -34,6 +34,9 @@ public class Main {
 			System.out.println(a);
 		}
 		
+		Ansatt ansatt = ansattDAO.finnAnsattMedId(1);
+		oppdaterAnsattLonn(ansatt, 300.00);
+		
 	}
 
 }
