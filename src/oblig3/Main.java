@@ -1,5 +1,7 @@
 package oblig3;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -35,7 +37,15 @@ public class Main {
 		}
 		
 		Ansatt ansatt = ansattDAO.finnAnsattMedId(1);
-		oppdaterAnsattLonn(ansatt, 300.00);
+        ansattDAO.oppdaterAansattLonn(ansatt, 300.00);
+        
+        System.out.println(aID);
+        
+        Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
+        ansattDAO.leggTilAnsatt(nyAnsatt);
+		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {
+			System.out.println(a);
+		}
 		
 	}
 

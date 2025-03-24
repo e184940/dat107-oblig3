@@ -87,5 +87,20 @@ public class AnsattDAO {
 			em.close();
 		}
 	}
+	
+	public void leggTilAnsatt(Ansatt nyAnsatt) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		try {
+			tx.begin();
+			em.persist(nyAnsatt);
+			tx.commit();
+		} catch (Throwable e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			em.close();
+		}
+	}
 
 }
