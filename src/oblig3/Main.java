@@ -1,16 +1,12 @@
 package oblig3;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
 public class Main {
 
 	public static void main(String[] args) {
 		
 		AnsattDAO ansattDAO = new AnsattDAO();
+		
+		AvdelingDAO avdelingDAO = new AvdelingDAO();
 		
 //		EntityManagerFactory emf = Persistence.createEntityManagerFactory("kontorPU");
 //        EntityManager em = emf.createEntityManager();
@@ -41,11 +37,14 @@ public class Main {
         
         System.out.println(aID);
         
-        Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
-        ansattDAO.leggTilAnsatt(nyAnsatt);
-		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {
-			System.out.println(a);
-		}
+        Avdeling av = avdelingDAO.finnAvdelingMedId(1);
+        System.out.println(av);
+        
+//        Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
+//        ansattDAO.leggTilAnsatt(nyAnsatt);
+//		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {
+//			System.out.println(a);
+//		}
 		
 	}
 

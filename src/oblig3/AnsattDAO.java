@@ -14,7 +14,7 @@ public class AnsattDAO {
 	private EntityManagerFactory emf;
 
 	public AnsattDAO() {
-		emf = Persistence.createEntityManagerFactory("kontorPU");
+		emf = Persistence.createEntityManagerFactory("fotballPU");
 	}
 
 	/*

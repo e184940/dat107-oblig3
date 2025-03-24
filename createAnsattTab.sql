@@ -14,8 +14,8 @@ CREATE TABLE ansatt (
 
 CREATE TABLE avdeling(
 	avdelings_id SERIAL PRIMARY KEY,
-	avdelingsnavn VARCHAR(20),
-	sjef_id INT,
+	avdelingsnavn VARCHAR(40),
+	sjef_id SERIAL,
 	FOREIGN KEY (sjef_id) REFERENCES ansatt(ansatt_id)
 );
 
@@ -99,7 +99,7 @@ INSERT INTO ansatt (
 );
 
 INSERT INTO avdeling (
-	avdelingsnavn VARCHAR(40)
+	avdelingsnavn
 ) VALUES (
 	'Angrep'
 ), (
