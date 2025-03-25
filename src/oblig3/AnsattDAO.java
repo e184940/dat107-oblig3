@@ -102,5 +102,24 @@ public class AnsattDAO {
 			em.close();
 		}
 	}
+	
+	public void oppdaterAvdeling(Ansatt ansatt, Avdeling nyAvdeling) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		try {
+			if (ansatt.getStilling() != "Sjef") {
+				tx.begin();
+				ansatt.setAvdeling(nyAvdeling);
+				em.merge(ansatt);
+				tx.commit();
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			em.close();
+		}
+		
+	}
 
 }

@@ -59,6 +59,10 @@ public class Main {
 //		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {
 //			System.out.println(a);
 //		}
+        
+        System.out.println("Original avdeling: " + aBrukernavnF.getAvdeling().getAvdelingsnavn());
+        ansattDAO.oppdaterAvdeling(aBrukernavnF, avdelingDAO.finnAvdelingMedId(1));
+        System.out.println("Ny avdeling: " + aBrukernavnF.getAvdeling().getAvdelingsnavn());
 		
 	}
 
