@@ -1,5 +1,7 @@
 package oblig3;
 
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -38,11 +40,20 @@ public class Main {
         System.out.println(aID);
         
         Avdeling av = avdelingDAO.finnAvdelingMedId(1);
-        System.out.println(av);
+        System.out.println("Avdeling: " + av.getAvdelingsnavn());
         
+        Ansatt sjef = ansattDAO.finnAnsattMedId(av.getSjef_id());
         
-//        Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
-//        ansattDAO.leggTilAnsatt(nyAnsatt);
+        List<Ansatt> ansatte = avdelingDAO.finnAnsatteIAvdeling(1);
+        for (Ansatt a : ansatte) {
+            if (a.equals(sjef)) {
+                System.out.println(a.getFornavn() + " " + a.getEtternavn() + " (Sjef)");
+            } else {
+                System.out.println(a.getFornavn() + " " + a.getEtternavn());
+            }
+        }
+//      Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
+//      ansattDAO.leggTilAnsatt(nyAnsatt);
 //		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {
 //			System.out.println(a);
 //		}

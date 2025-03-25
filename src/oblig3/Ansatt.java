@@ -112,8 +112,14 @@ public class Ansatt {
 	
 	@Override
 	public String toString() {
-		return "Ansatt [ansatt_id=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
-				+ etternavn + ", ansDato=" + ansDato + ", stilling=" + stilling + ", maanedslonn=" + maanedslonn
-				+ ", avdeling=" + avdeling + "]";
+	    return "Ansatt{" +
+	            "brukernavn='" + brukernavn + '\'' +
+	            ", fornavn='" + fornavn + '\'' +
+	            ", etternavn='" + etternavn + '\'' +
+	            ", stilling='" + stilling + '\'' +
+	            ", maanedsloenn=" + maanedslonn +
+	            ", avdeling=" + (avdeling != null ? avdeling.getAvdelingsnavn() : "Ingen") +
+	            '}';
 	}
+
 }

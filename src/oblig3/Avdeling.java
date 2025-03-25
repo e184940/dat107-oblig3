@@ -1,6 +1,5 @@
 package oblig3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -27,7 +26,7 @@ public class Avdeling {
     private Ansatt sjef;
     
     @OneToMany(mappedBy = "avdeling")
-    private List<Ansatt> ansatte = new ArrayList<>();
+    private List<Ansatt> ansatte;
     
 	
 	public Avdeling() {
@@ -57,8 +56,8 @@ public class Avdeling {
 		this.avdelingsnavn = avdelingsnavn;
 	}
 
-	public Ansatt getSjef_id() {
-		return sjef;
+	public int getSjef_id() {
+		return sjef.getAnsattId();
 	}
 
 	public void setSjef_id(Ansatt sjef) {
@@ -67,9 +66,13 @@ public class Avdeling {
 
 	@Override
 	public String toString() {
-		return "Avdeling [avdelings_id=" + avdelings_id + ", avdelingsnavn=" + avdelingsnavn + ", sjef_id=" + sjef
-				+ "]";
+	    return "Avdeling{" +
+	            "avdelingsnavn='" + avdelingsnavn + '\'' +
+	            ", sjef=" + (sjef != null ? sjef.getFornavn() + " " + sjef.getEtternavn() : "Ingen") +
+	            ", antall ansatte=" + (ansatte != null ? ansatte.size() : 0) +
+	            '}';
 	}
+
 
 	public List<Ansatt> getAnsatte() {
 		return ansatte;

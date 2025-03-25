@@ -27,7 +27,7 @@ public class AvdelingDAO {
 	public List<Ansatt> finnAnsatteIAvdeling(int avdelingId) {
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Ansatt> query = em.createQuery("SELECT a FROM Ansatt a WHERE a.avdeling.id = :avdelingId",
+			TypedQuery<Ansatt> query = em.createQuery("select a from Ansatt a where a.avdeling.avdelings_id = :avdelingId",
 					Ansatt.class);
 			query.setParameter("avdelingId", avdelingId);
 			return query.getResultList();
