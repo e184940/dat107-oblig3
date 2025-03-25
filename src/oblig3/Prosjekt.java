@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Prosjekt")
+@Table(name = "prosjekt")
 
 public class Prosjekt {
     @Id
@@ -22,9 +22,13 @@ public class Prosjekt {
     private String beskrivelse;
 
     @OneToMany(mappedBy = "prosjekt")
-    private List<prosjektDeltagelse> deltagelser = new ArrayList<>();
+    private List<ProsjektDeltagelse> deltagelser = new ArrayList<>();
+    
+    public Prosjekt() {
+    	
+    }
 
-	public Prosjekt(int prosjektId, String navn, String beskrivelse, List<prosjektDeltagelse> deltagelser) {
+	public Prosjekt(int prosjektId, String navn, String beskrivelse, List<ProsjektDeltagelse> deltagelser) {
 		super();
 		this.prosjektId = prosjektId;
 		this.navn = navn;
@@ -56,11 +60,11 @@ public class Prosjekt {
 		this.beskrivelse = beskrivelse;
 	}
 
-	public List<prosjektDeltagelse> getDeltagelser() {
+	public List<ProsjektDeltagelse> getDeltagelser() {
 		return deltagelser;
 	}
 
-	public void setDeltagelser(List<prosjektDeltagelse> deltagelser) {
+	public void setDeltagelser(List<ProsjektDeltagelse> deltagelser) {
 		this.deltagelser = deltagelser;
 	}
 

@@ -20,6 +20,23 @@ CREATE TABLE ansatt (
 	FOREIGN KEY (avdelings_id) REFERENCES avdeling(avdelings_id)
 );
 
+CREATE TABLE prosjekt (
+	prosjekt_id SERIAL PRIMARY KEY,
+	prosjektnavn VARCHAR(40),
+	beskrivelse VARCHAR(255)
+);
+
+CREATE TABLE prosjektdeltagelse (
+	prosjektdeltagelse_id SERIAL PRIMARY KEY,
+	ansatt_id INT NOT NULL,
+	prosjekt_id INT NOT NULL,
+	rolle VARCHAR(50),
+	arbeidstimer DECIMAL(10,2),
+	FOREIGN KEY (ansatt_id) REFERENCES ansatt(ansatt_id) ON DELETE CASCADE,
+	FOREIGN KEY (prosjekt_id) REFERENCES prosjekt(prosjekt_id) ON DELETE CASCADE
+);
+
+
 ALTER TABLE avdeling ADD CONSTRAINT sjef FOREIGN KEY (sjef_id) REFERENCES ansatt(ansatt_id) ON DELETE SET NULL;
 
 INSERT INTO avdeling (
@@ -120,6 +137,22 @@ INSERT INTO ansatt (
 	'Chopper',
 	88392.40,
 	2
+);
+
+INSERT INTO prosjekt (
+	prosjektnavn,
+	beskrivelse
+) VALUES (
+	'Champions League',
+	'Vinne hele turneringen ubeseiret'
+);
+
+INSERT INTO prosjektdeltagelse (
+	rolle,
+	arbeidstimer
+) VALUES (
+	'Motivator',
+	37.5
 );
 
 UPDATE avdeling SET sjef_id = (SELECT ansatt_id FROM ansatt WHERE brukernavn = 'EH9') WHERE avdelingsnavn = 'Angrep';

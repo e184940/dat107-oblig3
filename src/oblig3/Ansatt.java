@@ -1,7 +1,6 @@
 package oblig3;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -34,6 +33,9 @@ public class Ansatt {
 	@JoinColumn(name = "avdelings_id")
 	private Avdeling avdeling;
 
+	@OneToMany(mappedBy = "ansatt")
+	private List<ProsjektDeltagelse> prosjektdeltagelser;
+	
 	public Ansatt() {
 	}
 
@@ -50,8 +52,6 @@ public class Ansatt {
 		
 	}
 	
-	@OneToMany(mappedBy = "ansatt")
-	private List<prosjektDeltagelse> prosjektdeltagelser = new ArrayList<>();
 
 	public int getAnsattId() {
 		return ansatt_id;
