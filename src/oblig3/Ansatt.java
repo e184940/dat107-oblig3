@@ -1,7 +1,6 @@
 package oblig3;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -117,14 +116,22 @@ public class Ansatt {
 	
 	@Override
 	public String toString() {
-	    return "Ansatt{" +
-	            "brukernavn='" + brukernavn + '\'' +
-	            ", fornavn='" + fornavn + '\'' +
-	            ", etternavn='" + etternavn + '\'' +
-	            ", stilling='" + stilling + '\'' +
-	            ", maanedsloenn=" + maanedslonn +
+	    return "Ansatt [" +
+	            "brukernavn=" + brukernavn +
+	            ", fornavn=" + fornavn  +
+	            ", etternavn=" + etternavn +
+	            ", stilling=" + stilling +
+	            ", månedslønn=" + maanedslonn +
 	            ", avdeling=" + (avdeling != null ? avdeling.getAvdelingsnavn() : "Ingen") +
-	            '}';
+	            "]";
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ansatt ansatt = (Ansatt) o;
+        return ansatt_id == ansatt.ansatt_id;
+    }
 
 }
