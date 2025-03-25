@@ -40,6 +40,7 @@ public class Main {
         Avdeling av = avdelingDAO.finnAvdelingMedId(1);
         System.out.println(av);
         
+        
 //        Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
 //        ansattDAO.leggTilAnsatt(nyAnsatt);
 //		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {

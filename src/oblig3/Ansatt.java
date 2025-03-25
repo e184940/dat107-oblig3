@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,12 +24,16 @@ public class Ansatt {
 	private LocalDate ansDato;
 	private String stilling;
 	private double maanedslonn;
+	
+	@ManyToOne
+	@JoinColumn(name = "avdelings_id")
+	private Avdeling avdeling;
 
 	public Ansatt() {
 	}
 
 	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansDato, String stilling,
-			double maanedslonn) {
+			double maanedslonn, Avdeling avdeling) {
 		super();
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
@@ -35,6 +41,8 @@ public class Ansatt {
 		this.ansDato = ansDato;
 		this.stilling = stilling;
 		this.maanedslonn = maanedslonn;
+		this.avdeling = avdeling;
+		
 	}
 
 	public int getAnsattId() {
@@ -93,9 +101,19 @@ public class Ansatt {
 		this.maanedslonn = maanedslonn;
 	}
 
+
+	public Avdeling getAvdeling() {
+		return avdeling;
+	}
+		
+	public void setAvdeling(Avdeling avdeling) {
+		this.avdeling = avdeling;
+	}
+	
 	@Override
 	public String toString() {
-		return "Ansatt [ansattId=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
-				+ etternavn + ", ansDato=" + ansDato + ", stilling=" + stilling + ", månedslønn=" + maanedslonn + "]";
+		return "Ansatt [ansatt_id=" + ansatt_id + ", brukernavn=" + brukernavn + ", fornavn=" + fornavn + ", etternavn="
+				+ etternavn + ", ansDato=" + ansDato + ", stilling=" + stilling + ", maanedslonn=" + maanedslonn
+				+ ", avdeling=" + avdeling + "]";
 	}
 }
