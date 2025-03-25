@@ -40,6 +40,7 @@ public class Main {
         System.out.println(aID);
         
         Avdeling av = avdelingDAO.finnAvdelingMedId(1);
+        System.out.println(av);
         System.out.println("Avdeling: " + av.getAvdelingsnavn());
         
         Ansatt sjef = ansattDAO.finnAnsattMedId(av.getSjef_id());
@@ -52,6 +53,7 @@ public class Main {
                 System.out.println(a.getFornavn() + " " + a.getEtternavn());
             }
         }
+        
 //      Ansatt nyAnsatt = new Ansatt("SR4", "Sergio", "Ramos", LocalDate.parse("2020-10-31"), "Maniac", 199.01); 
 //      ansattDAO.leggTilAnsatt(nyAnsatt);
 //		for(Ansatt a : ansattDAO.finnAlleAnsatte()) {

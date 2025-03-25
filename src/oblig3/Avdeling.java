@@ -66,11 +66,11 @@ public class Avdeling {
 
 	@Override
 	public String toString() {
-	    return "Avdeling{" +
-	            "avdelingsnavn='" + avdelingsnavn + '\'' +
+	    return "Avdeling [" +
+	            "avdelingsnavn=" + avdelingsnavn +
 	            ", sjef=" + (sjef != null ? sjef.getFornavn() + " " + sjef.getEtternavn() : "Ingen") +
 	            ", antall ansatte=" + (ansatte != null ? ansatte.size() : 0) +
-	            '}';
+	            "]";
 	}
 
 
