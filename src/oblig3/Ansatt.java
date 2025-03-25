@@ -10,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
+
 @Entity
 @Table(schema = "oblig3")
 public class Ansatt {
@@ -44,6 +46,9 @@ public class Ansatt {
 		this.avdeling = avdeling;
 		
 	}
+	
+	@OneToMany(mappedBy = "ansatt")
+	private List<Prosjektdeltagelse> prosjektdeltagelser = new ArrayList<>();
 
 	public int getAnsattId() {
 		return ansatt_id;
