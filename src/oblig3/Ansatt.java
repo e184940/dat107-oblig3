@@ -38,6 +38,18 @@ public class Ansatt {
 	
 	public Ansatt() {
 	}
+	
+	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansDato, String stilling,
+			double maanedslonn) {
+		super();
+		this.brukernavn = brukernavn;
+		this.fornavn = fornavn;
+		this.etternavn = etternavn;
+		this.ansDato = ansDato;
+		this.stilling = stilling;
+		this.maanedslonn = maanedslonn;
+		
+	}
 
 	public Ansatt(String brukernavn, String fornavn, String etternavn, LocalDate ansDato, String stilling,
 			double maanedslonn, Avdeling avdeling) {
