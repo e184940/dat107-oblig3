@@ -64,9 +64,9 @@ public class Main {
 			case 10:
 				leggTilAvdeling();
 				break;
-//			case 11:
-//				leggTilProsjekt();
-//				break;
+			case 11:
+				leggTilProsjekt();
+				break;
 //			case 12:
 //				registrerAnsattIProsjekt();
 //				break;
@@ -76,6 +76,21 @@ public class Main {
 			default:
 				System.out.println("Ugyldig valg, prøv igjen");
 			}
+		}
+	}
+
+	private static void leggTilProsjekt() {
+		System.out.println("Prosjektnavn: ");
+		String inputNyttProsjektnavn = scanner.nextLine();
+		
+		System.out.println("Prosjektbeskrivelse (unngå avsnitt): ");
+		String prosjektbeskrivelse = scanner.nextLine();
+		
+		Prosjekt nyttProsjekt = new Prosjekt(inputNyttProsjektnavn, prosjektbeskrivelse);
+		
+		if (nyttProsjekt != null) {
+			// Her bør det tas rede for om det allerede eksisterer prosjekt med samme navn
+			prosjektDAO.lagreProsjekt(nyttProsjekt);
 		}
 	}
 

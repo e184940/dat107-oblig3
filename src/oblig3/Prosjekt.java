@@ -26,6 +26,13 @@ public class Prosjekt {
     public Prosjekt() {
     	
     }
+    
+    // tom deltagelse konstruktør for å unngå avhengigheter som går i ring
+    public Prosjekt(String prosjektnavn, String beskrivelse) {
+		super();
+		this.prosjektnavn = prosjektnavn;
+		this.beskrivelse = beskrivelse;
+	}
 
 	public Prosjekt(String prosjektnavn, String beskrivelse, List<ProsjektDeltagelse> deltagelser) {
 		super();
