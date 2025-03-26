@@ -187,4 +187,54 @@ public class Main {
 		}
 	}
 	
+	private static void leggTilAvdeling() {
+		System.out.print("Avdelingsnavn: ");
+		String navn = scanner.nextLine();
+		System.out.print("Skriv inn sjefens id: ");
+		String sjefIdInput = scanner.nextLine();
+		Ansatt sjef;
+		int sjefId = Integer.parseInt(sjefIdInput);
+        sjef = ansattDAO.finnAnsattMedId(sjefId);
+        avdelingDAO.leggTilAvdeling(navn, sjef);
+        
+        boolean erSjefForEnAvdeling = avdelingDAO.erSjefForEnAvdeling(sjef);
+        if (erSjefForEnAvdeling) {
+            System.out.println("Denne ansatte er allerede sjef for en annen avdeling.");
+        } else {
+            avdelingDAO.leggTilAvdeling(navn, sjef);
+            System.out.println("Avdeling lagt til, med " + sjef.getBrukernavn() + " som sjef");
+        }
+	}
+
+	private static void leggTilProsjekt() {
+		System.out.print("Prosjektnavn: ");
+		String navn = scanner.nextLine();
+		System.out.print("Beskrivelse: ");
+		String beskrivelse = scanner.nextLine();
+		prosjektDAO.lagreProsjekt(new Prosjekt(navn, beskrivelse, null));
+		System.out.println("Prosjekt lagt til");
+	}
+
+    private static void registrerAnsattIProsjekt() {
+        System.out.print("Skriv inn ansatt-ID: ");
+        int ansattId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Skriv inn prosjekt-ID: ");
+        int prosjektId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Skriv inn ansattes rolle i prosjektet: ");
+        String rolle = scanner.nextLine();
+        System.out.print("Skriv inn antall timer ansatt skal jobbe: ");
+        double timer = scanner.nextDouble();
+        Ansatt ansatt = ansattDAO.finnAnsattMedId(ansattId);
+        Prosjekt prosjekt = prosjektDAO.finnProsjekt(prosjektId);
+        if (ansatt == null || prosjekt == null) {
+            System.out.println("Fant ikke ansatt eller prosjekt. Sjekk id'ene");
+            return;
+        }
+        ProsjektDeltagelse deltagelse = new ProsjektDeltagelse(ansatt, prosjekt, rolle, timer);
+        prosjektDAO.registrerAnsattIProsjekt(deltagelse);
+        System.out.println("Ansatt " + ansatt.getFornavn() + " " + ansatt.getEtternavn() +
+                " er nå registrert i prosjektet " + prosjekt.getProsjektnavn() + " som " + rolle + "!");
+    }
 }
