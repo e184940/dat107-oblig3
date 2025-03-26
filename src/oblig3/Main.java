@@ -64,17 +64,35 @@ public class Main {
 			case 10:
 				leggTilAvdeling();
 				break;
-			case 11:
-				leggTilProsjekt();
-				break;
-			case 12:
-				registrerAnsattIProsjekt();
-				break;
+//			case 11:
+//				leggTilProsjekt();
+//				break;
+//			case 12:
+//				registrerAnsattIProsjekt();
+//				break;
 			case 13:
 				System.out.println("Avslutter programmet...");
 				return;
 			default:
 				System.out.println("Ugyldig valg, prøv igjen");
+			}
+		}
+	}
+
+	private static void leggTilAvdeling() {
+		System.out.println("Navn på ny avdeling: ");
+		String inputNyAvdeling = scanner.nextLine();
+		
+		System.out.println("Brukernavn på sjef for avdeling " + inputNyAvdeling + ": ");
+		String inputNySjefForAvdeling = scanner.nextLine();
+		
+		Ansatt nySjef = ansattDAO.finnAnsattMedBrukernavn(inputNySjefForAvdeling);
+		if (nySjef != null) {
+			if (!avdelingDAO.erSjefForEnAvdeling(nySjef)) {
+				ansattDAO.leggTilAvdeling(inputNyAvdeling, nySjef);
+				System.out.println("Ny sjef for avdeling " + inputNyAvdeling + ": " + nySjef.getBrukernavn());
+			} else {
+				System.out.println("Er allerede sjef for avdeling " + nySjef.getAvdeling().getAvdelingsnavn());
 			}
 		}
 	}
