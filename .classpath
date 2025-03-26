@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/Users/egortarasovskis/Desktop/scewl/dat107/dat107_oblig3/lib/eclipselink-4.0.2.jar"/>
-	<classpathentry kind="lib" path="/Users/egortarasovskis/Desktop/scewl/dat107/dat107_oblig3/lib/jakarta.persistence-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="/Users/egortarasovskis/Desktop/scewl/dat107/dat107_oblig3/lib/postgresql-42.7.2.jar"/>
+	<classpathentry kind="lib" path="lib/eclipselink-4.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/jakarta.persistence-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-42.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
