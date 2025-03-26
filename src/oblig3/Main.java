@@ -68,19 +68,13 @@ public class Main {
 			case 11:
 				leggTilProsjekt();
 				break;
-<<<<<<< HEAD
 			case 12:
 				registrerAnsattIProsjekt();
 				break;
-=======
-//			case 12:
-//				registrerAnsattIProsjekt();
-//				break;
->>>>>>> 5070a2c75b866ddc49d2a996e208e4f2d30c611d
 			case 13:
 				hentProsjektnavnOgBeskrivelse();
 				break;
-			case 14:
+			case 15:
 				System.out.println("Avslutter programmet...");
 				return;
 			default:
@@ -89,7 +83,6 @@ public class Main {
 		}
 	}
 
-<<<<<<< HEAD
 	private static void hentProsjektnavnOgBeskrivelse() {
 		List<Prosjekt> prosjekter = prosjektDAO.hentProsjektnavnOgBeskrivelse();
 		if (prosjekter.isEmpty()) {
@@ -121,8 +114,6 @@ public class Main {
 		}
 	}
 
-=======
->>>>>>> 5070a2c75b866ddc49d2a996e208e4f2d30c611d
 	private static void finnAnsattMedId() {
 		System.out.print("Skriv inn ansatt-ID: ");
 		int id = scanner.nextInt();
