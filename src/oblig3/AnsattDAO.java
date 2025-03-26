@@ -121,5 +121,31 @@ public class AnsattDAO {
 		}
 		
 	}
+	
+	public void leggTilAvdeling(String avdelingsnavn, Ansatt nySjef) {
+	    EntityManager em = emf.createEntityManager();
+	    EntityTransaction tx = em.getTransaction();
+	    try {
+	        tx.begin();
+	        
+	        Avdeling nyAvdeling = new Avdeling();
+	        nyAvdeling.setAvdelingsnavn(avdelingsnavn);
+	        nyAvdeling.setSjef_id(nySjef);
+	        em.persist(nyAvdeling);
+
+	        nySjef.setAvdeling(nyAvdeling);
+	        em.merge(nySjef);
+
+	        tx.commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        if (tx.isActive()) {
+	            tx.rollback();
+	        }
+	    } finally {
+	        em.close();
+	    }
+	}
+
 
 }

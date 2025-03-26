@@ -1,6 +1,5 @@
 package oblig3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -11,45 +10,44 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "prosjekt")
-
+@Table(schema = "oblig3")
 public class Prosjekt {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int prosjektId;
+    private int prosjekt_id;
     
-    private String navn;
+    private String prosjektnavn;
     private String beskrivelse;
 
     @OneToMany(mappedBy = "prosjekt")
-    private List<ProsjektDeltagelse> deltagelser = new ArrayList<>();
+    private List<ProsjektDeltagelse> deltagelser;
     
     public Prosjekt() {
     	
     }
 
-	public Prosjekt(int prosjektId, String navn, String beskrivelse, List<ProsjektDeltagelse> deltagelser) {
+	public Prosjekt(String prosjektnavn, String beskrivelse, List<ProsjektDeltagelse> deltagelser) {
 		super();
-		this.prosjektId = prosjektId;
-		this.navn = navn;
+		this.prosjektnavn = prosjektnavn;
 		this.beskrivelse = beskrivelse;
 		this.deltagelser = deltagelser;
 	}
 
-	public int getProsjektId() {
-		return prosjektId;
+	public int getProsjekt_id() {
+		return prosjekt_id;
 	}
 
-	public void setProsjektId(int prosjektId) {
-		this.prosjektId = prosjektId;
+	public void setProsjektId(int prosjekt_id) {
+		this.prosjekt_id = prosjekt_id;
 	}
 
-	public String getNavn() {
-		return navn;
+	public String getProsjektnavn() {
+		return prosjektnavn;
 	}
 
-	public void setNavn(String navn) {
-		this.navn = navn;
+	public void setNavn(String prosjektnavn) {
+		this.prosjektnavn = prosjektnavn;
 	}
 
 	public String getBeskrivelse() {
@@ -70,7 +68,7 @@ public class Prosjekt {
 
 	@Override
 	public String toString() {
-		return "Prosjekt [prosjektId=" + prosjektId + ", navn=" + navn + ", beskrivelse=" + beskrivelse + "]";
+		return "Prosjekt [prosjekt_id=" + prosjekt_id + ", prosjektnavn=" + prosjektnavn + ", beskrivelse=" + beskrivelse + "]";
 	}
 
 }

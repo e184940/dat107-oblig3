@@ -148,9 +148,13 @@ INSERT INTO prosjekt (
 );
 
 INSERT INTO prosjektdeltagelse (
+	ansatt_id,
+	prosjekt_id,
 	rolle,
 	arbeidstimer
 ) VALUES (
+	(SELECT ansatt_id FROM ansatt WHERE brukernavn = 'CR7'), 
+	(SELECT prosjekt_id FROM prosjekt WHERE prosjektnavn = 'Champions League'),
 	'Motivator',
 	37.5
 );

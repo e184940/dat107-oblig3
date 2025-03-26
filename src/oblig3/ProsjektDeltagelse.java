@@ -7,11 +7,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "prosjektdeltakelse")
+@Table(schema = "oblig3")
 public class ProsjektDeltagelse {
-
-	private String rolle;
-	private double timer;
 
 	@Id
 	@ManyToOne
@@ -22,17 +19,20 @@ public class ProsjektDeltagelse {
 	@ManyToOne
 	@JoinColumn(name = "prosjekt_id")
 	private Prosjekt prosjekt;
+	
+	private String rolle;
+	private double arbeidstimer;
 
-	public ProsjektDeltagelse() {
-
-	}
-
-	public ProsjektDeltagelse(Ansatt ansatt, Prosjekt prosjekt, String rolle, double timer) {
+	public ProsjektDeltagelse(Ansatt ansatt, Prosjekt prosjekt, String rolle, double arbeidstimer) {
 		super();
 		this.ansatt = ansatt;
 		this.prosjekt = prosjekt;
 		this.rolle = rolle;
-		this.timer = timer;
+		this.arbeidstimer = arbeidstimer;
+	}
+	
+	public ProsjektDeltagelse() {
+		
 	}
 
 	public Ansatt getAnsatt() {
@@ -59,18 +59,18 @@ public class ProsjektDeltagelse {
 		this.rolle = rolle;
 	}
 
-	public double getTimer() {
-		return timer;
+	public double getArbeidstimer() {
+		return arbeidstimer;
 	}
 
-	public void setTimer(double timer) {
-		this.timer = timer;
+	public void setArbdeidtimer(double arbeidstimer) {
+		this.arbeidstimer = arbeidstimer;
 	}
 
 	@Override
 	public String toString() {
-		return "prosjektDeltagelse [ansatt=" + ansatt + ", prosjekt=" + prosjekt + ", rolle=" + rolle + ", timer="
-				+ timer + "]";
+		return "prosjektDeltagelse [ansatt=" + ansatt + ", prosjekt=" + prosjekt + ", rolle=" + rolle + ", arbeidstimer="
+				+ arbeidstimer + "]";
 	}
 
 }
