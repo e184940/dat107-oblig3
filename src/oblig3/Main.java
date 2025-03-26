@@ -79,39 +79,6 @@ public class Main {
 		}
 	}
 
-	private static void leggTilProsjekt() {
-		System.out.println("Prosjektnavn: ");
-		String inputNyttProsjektnavn = scanner.nextLine();
-		
-		System.out.println("Prosjektbeskrivelse (unngå avsnitt): ");
-		String prosjektbeskrivelse = scanner.nextLine();
-		
-		Prosjekt nyttProsjekt = new Prosjekt(inputNyttProsjektnavn, prosjektbeskrivelse);
-		
-		if (nyttProsjekt != null) {
-			// Her bør det tas rede for om det allerede eksisterer prosjekt med samme navn
-			prosjektDAO.lagreProsjekt(nyttProsjekt);
-		}
-	}
-
-	private static void leggTilAvdeling() {
-		System.out.println("Navn på ny avdeling: ");
-		String inputNyAvdeling = scanner.nextLine();
-		
-		System.out.println("Brukernavn på sjef for avdeling " + inputNyAvdeling + ": ");
-		String inputNySjefForAvdeling = scanner.nextLine();
-		
-		Ansatt nySjef = ansattDAO.finnAnsattMedBrukernavn(inputNySjefForAvdeling);
-		if (nySjef != null) {
-			if (!avdelingDAO.erSjefForEnAvdeling(nySjef)) {
-				ansattDAO.leggTilAvdeling(inputNyAvdeling, nySjef);
-				System.out.println("Ny sjef for avdeling " + inputNyAvdeling + ": " + nySjef.getBrukernavn());
-			} else {
-				System.out.println("Er allerede sjef for avdeling " + nySjef.getAvdeling().getAvdelingsnavn());
-			}
-		}
-	}
-
 	private static void finnAnsattMedId() {
 		System.out.print("Skriv inn ansatt-ID: ");
 		int id = scanner.nextInt();
