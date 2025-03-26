@@ -28,7 +28,8 @@ public class Main {
 			System.out.println("10: Legg til ny avdeling");
 			System.out.println("11: Legg til nytt prosjekt");
 			System.out.println("12: Registrer ansatt på prosjekt");
-			System.out.println("13: Avslutt");
+			System.out.println("13: List alle prosjekt");
+			System.out.println("14: Avslutt");
 			System.out.print("Velg et alternativ: ");
 			int valg = scanner.nextInt();
 			scanner.nextLine();
@@ -64,17 +65,40 @@ public class Main {
 			case 10:
 				leggTilAvdeling();
 				break;
-//			case 11:
-//				leggTilProsjekt();
-//				break;
+			case 11:
+				leggTilProsjekt();
+				break;
+<<<<<<< HEAD
+			case 12:
+				registrerAnsattIProsjekt();
+				break;
+=======
 //			case 12:
 //				registrerAnsattIProsjekt();
 //				break;
+>>>>>>> 5070a2c75b866ddc49d2a996e208e4f2d30c611d
 			case 13:
+				hentProsjektnavnOgBeskrivelse();
+				break;
+			case 14:
 				System.out.println("Avslutter programmet...");
 				return;
 			default:
 				System.out.println("Ugyldig valg, prøv igjen");
+			}
+		}
+	}
+
+<<<<<<< HEAD
+	private static void hentProsjektnavnOgBeskrivelse() {
+		List<Prosjekt> prosjekter = prosjektDAO.hentProsjektnavnOgBeskrivelse();
+		if (prosjekter.isEmpty()) {
+			System.out.println("Fant ingen prosjekter");
+			return;
+		} else {
+			System.out.println("Liste over prosjekter: ");
+			for (Prosjekt p : prosjekter) {
+				System.out.println(p.getProsjektnavn() + ", " + p.getBeskrivelse());
 			}
 		}
 	}
@@ -97,6 +121,8 @@ public class Main {
 		}
 	}
 
+=======
+>>>>>>> 5070a2c75b866ddc49d2a996e208e4f2d30c611d
 	private static void finnAnsattMedId() {
 		System.out.print("Skriv inn ansatt-ID: ");
 		int id = scanner.nextInt();
@@ -203,25 +229,6 @@ public class Main {
 		} else {
 			System.out.println("Feil: Ansatt eller avdeling ikke funnet");
 		}
-	}
-	
-	private static void leggTilAvdeling() {
-		System.out.print("Avdelingsnavn: ");
-		String navn = scanner.nextLine();
-		System.out.print("Skriv inn sjefens id: ");
-		String sjefIdInput = scanner.nextLine();
-		Ansatt sjef;
-		int sjefId = Integer.parseInt(sjefIdInput);
-        sjef = ansattDAO.finnAnsattMedId(sjefId);
-        avdelingDAO.leggTilAvdeling(navn, sjef);
-        
-        boolean erSjefForEnAvdeling = avdelingDAO.erSjefForEnAvdeling(sjef);
-        if (erSjefForEnAvdeling) {
-            System.out.println("Denne ansatte er allerede sjef for en annen avdeling.");
-        } else {
-            avdelingDAO.leggTilAvdeling(navn, sjef);
-            System.out.println("Avdeling lagt til, med " + sjef.getBrukernavn() + " som sjef");
-        }
 	}
 
 	private static void leggTilProsjekt() {

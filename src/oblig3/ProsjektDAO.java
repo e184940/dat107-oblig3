@@ -50,7 +50,7 @@ public class ProsjektDAO {
 			em.close();
 		}
 	}
-	
+
 	public void registrerAnsattIProsjekt(ProsjektDeltagelse deltagelse) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -63,6 +63,16 @@ public class ProsjektDAO {
 			if (tx.isActive()) {
 				tx.rollback();
 			}
+		} finally {
+			em.close();
+		}
+	}
+
+	public List<Prosjekt> hentProsjektnavnOgBeskrivelse() {
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Prosjekt> query = em.createQuery("select p from Prosjekt p", Prosjekt.class);
+			return query.getResultList();
 		} finally {
 			em.close();
 		}
